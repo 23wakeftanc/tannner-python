@@ -9,3 +9,4 @@ tools.
 
 class TannnerPython(Exception):
     """Base error class for Tannner Python."""
+
