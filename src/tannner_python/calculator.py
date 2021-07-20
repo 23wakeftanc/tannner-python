@@ -1,0 +1,2 @@
+print("Enter Equation:")
+input()
