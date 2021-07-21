@@ -11,6 +11,7 @@ They get deleted when the indented block finishes
 -global variables: variables that are defined outside of all the indented blocks. so they are in teh "global scope"
 any code block can see variables
 -docstrings: the first line of a function is called the dockstring. It should be a short summary of what the function does. 
+-'len' counts in a string
 
 Variable types
 -variables: a value tht you can change. 'a=1' and then 'a=2' overwrites the 'a' variable.
@@ -22,7 +23,7 @@ GLobal variables: if you need a variable in the global scope, PLEASE make it a c
  Otherwise it is a "global variables", those are DEATH. 90% of bugs in code come from global variables.
 
  Typing:
- there is a builtin library in python call "typing that helps you label what type of data you store in variables.
+ there is a builtin library in python called "typing" that helps you label what type of data you store in variables.
  you declare a type like this: 'x: int = 5'. This shows that x should ALWAYS should always be an interger.
  This is REALLY helpful for people for people reading your code, including you 2 weeks from now, when you have forgotten your
  own code.
@@ -75,19 +76,35 @@ def play_hangman():
     print("Welcome to Hangman!")
     game_over: bool = False
     print("We're playing")
-
+    guesses: List[str] = []
     word: str = get_rand_word()
-
+    num_wrong_guesses: int = 0
+    
     while not game_over:
+        if num_wrong_guesses >= 3:
+            print("Game Over")
+            break
+
         word_length: int = len(word)
         print("_ " * word_length)
         guess: str = input("Guess a letter:")
         guess_is_correct: bool = guess in word
-        if guess_is_correct:
-            print("Correct!")
+        if guess in guesses:
+            print("Already made that guess. Guess Again: ")
         else:
-            print("Wrong :(")
+            guesses.append(guess)
+            if guess_is_correct:
+                print("Correct!")
 
+            else:
+                print("Wrong :(")
+                num_wrong_guesses=num_wrong_guesses+1
+                
+
+# track the guess
+# print out an updated word ouput "_ a _ a _ a"
+# create a limit on wrong guesses
+# print our the hanging guy
 
 if __name__ == "__main__":
     # only play hangman if user ran "python hangman.py play"
