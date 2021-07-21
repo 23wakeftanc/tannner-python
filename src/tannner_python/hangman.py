@@ -49,51 +49,48 @@ Good ways to get help
 - stackoverfow
 - eric the cool man
 - ww3schools
-
-
-    
 """
 from random import randint
-
 import sys
 from typing import List, Union
- #this is all caps becuase WORDS is a constant and the variable WORDS should never be changed
- # if we did modify this it would be a 'global variable, global variables are bad
-WORDS: List[str]=[
-    "apple",
-    "banana",
-    "orange",
-    "coconut"
-]
-def get_rand_word() ->str :
-    n = randint(0,len(WORDS)-1)
+
+# this is all caps becuase WORDS is a constant and the variable WORDS should never be changed
+# if we did modify this it would be a 'global variable, global variables are bad
+WORDS: List[str] = ["apple", "banana", "orange", "coconut"]
+
+
+def get_rand_word() -> str:
+    n = randint(0, len(WORDS) - 1)
     return WORDS[n]
+
+
 # we documeneted this a None becuase of a variable doesn't have a return, it returns none by default
 def show_help() -> None:
-    """ tells to run python hangman.py play"""
+    """tells to run python hangman.py play"""
     print("run python hangman.py play")
 
 
 def play_hangman():
     """Play a game of Hangman"""
     print("Welcome to Hangman!")
-    game_over:bool = False
+    game_over: bool = False
     print("We're playing")
 
-    word:str=get_rand_word()
+    word: str = get_rand_word()
 
     while not game_over:
-        word_length: int=len(word)
-        print("_ "*word_length)
-        guess:str=input("Guess a letter:")
-        guess_is_correct:bool= guess in word
-        if guess_is_correct: 
+        word_length: int = len(word)
+        print("_ " * word_length)
+        guess: str = input("Guess a letter:")
+        guess_is_correct: bool = guess in word
+        if guess_is_correct:
             print("Correct!")
         else:
             print("Wrong :(")
 
+
 if __name__ == "__main__":
-# only play hangman if user ran "python hangman.py play"
+    # only play hangman if user ran "python hangman.py play"
     args = sys.argv
     print(sys.argv)
     if args[1] == "play":
