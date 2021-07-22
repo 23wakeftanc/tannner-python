@@ -81,7 +81,7 @@ def play_hangman():
     num_wrong_guesses: int = 0
     
     while not game_over:
-        if num_wrong_guesses >= 3:
+        if num_wrong_guesses >= 5:
             print("Game Over")
             break
 

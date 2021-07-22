@@ -1,2 +1,0 @@
-print("Enter Equation:")
-input()
